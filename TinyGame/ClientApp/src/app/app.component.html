@@ -1,0 +1,47 @@
+<div class="container">
+    <div *ngIf="warrior" class="image-container rounded" [cdkDragDisabled]="!canUserDragAndMove" #imageContainer cdkDrag (cdkDragMoved)="moving($event)" (cdkDragStarted)="started()" (cdkDragEnded)="ended()" [cdkDragFreeDragPosition]="dragPosition">
+        <img [src]="warrior.imageSrc" alt="">
+    </div>
+    <div class="area">
+        <div class="threshold top left" cdkDropList>
+            <div class="box">
+                Japanese
+            </div>
+        </div>
+    </div>
+    <div class="area">
+        <div class="threshold top right">
+            <div class="box">
+                Chinese
+            </div>
+        </div>
+    </div>
+    <div class="area">
+        <div class="threshold bottom left">
+            <div class="box">
+                Korean
+            </div>
+        </div>
+    </div>
+    <div class="area">
+        <div class="threshold bottom right">
+            <div class="box">
+                Thai
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup rounded" *ngIf="isGameEnded">
+    <div class="header">
+        <h1>
+            Tiny Game Ended
+        </h1>
+    </div>
+    <div class="content">
+        Your final score is: {{totalScore}}
+    </div>
+    <div class="footer">
+        <button mat-flat-button color="primary" (click)="onRestartClick()">Restart</button>
+    </div>
+</div>
