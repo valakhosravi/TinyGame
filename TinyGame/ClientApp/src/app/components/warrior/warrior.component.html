@@ -1,0 +1,7 @@
+<div class="image-container rounded" [cdkDragDisabled]="!canUserDragAndMove" [cdkDragFreeDragPosition]="position" (cdkDragMoved)="moving($event)" (cdkDragStarted)="start()" (cdkDragEnded)="end()" cdkDrag>
+    <img [src]="data.imageSrc" alt="">
+</div>
+
+<!-- <div *ngIf="warrior" class="image-container rounded" [cdkDragDisabled]="!canUserDragAndMove" #imageContainer cdkDrag (cdkDragMoved)="moving($event)" (cdkDragStarted)="started()" (cdkDragEnded)="ended()" [cdkDragFreeDragPosition]="dragPosition">
+    <img [src]="warrior.imageSrc" alt="">
+</div> -->
