@@ -29,3 +29,8 @@ body {
     border-radius: 4px;
     overflow: hidden;
 }
+
+.cdk-drag-disabled {
+    transition: .5s transform, 1s opacity!important;
+    opacity: 0;
+}

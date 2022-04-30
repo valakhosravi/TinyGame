@@ -1,7 +1,10 @@
 <div class="container">
-    <div *ngIf="warrior" class="image-container rounded" [cdkDragDisabled]="!canUserDragAndMove" #imageContainer cdkDrag (cdkDragMoved)="moving($event)" (cdkDragStarted)="started()" (cdkDragEnded)="ended()" [cdkDragFreeDragPosition]="dragPosition">
+    <!-- <div *ngIf="warrior" class="image-container rounded" [cdkDragDisabled]="!canUserDragAndMove" #imageContainer cdkDrag (cdkDragMoved)="moving($event)" (cdkDragStarted)="started()" (cdkDragEnded)="ended()" [cdkDragFreeDragPosition]="dragPosition">
         <img [src]="warrior.imageSrc" alt="">
-    </div>
+    </div> -->
+    <ng-container *ngIf="warrior">
+        <app-warrior [data]="warrior" [canUserDragAndMove]="canUserDragAndMove" [position]="dragPosition" (positionChange)="updateDragPosition($event)" (dragStateChange)="dragStateChanged($event)"></app-warrior>
+    </ng-container>
     <div class="area">
         <div class="threshold top left" cdkDropList>
             <div class="box">

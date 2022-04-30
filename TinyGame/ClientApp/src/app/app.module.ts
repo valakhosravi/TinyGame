@@ -10,11 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { WarriorComponent } from './components/warrior/warrior.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WarriorComponent
   ],
   imports: [
     BrowserModule,

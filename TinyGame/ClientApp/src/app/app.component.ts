@@ -13,7 +13,7 @@ export class AppComponent {
   @ViewChild('imageContainer') imageContainer!: ElementRef;
 
   public totalScore = 0;
-  public dragPosition = { x: (window.innerWidth / 2) - 80, y: 0 };
+  // public dragPosition = { x: (window.innerWidth / 2) - 80, y: 0 };
   public isImageDragged = false;
   public canUserDragAndMove = true;
   public isGameEnded = false;
@@ -22,6 +22,9 @@ export class AppComponent {
   public enteredArea: string | undefined;
   public index = 0;
   moveingInterval!: any;
+
+  public dragPosition = { x: (window.innerWidth / 2) - 80, y: 0 };
+  private _dragPosition: any;
 
   constructor(
     private warriorService: WarriorService,
@@ -38,6 +41,12 @@ export class AppComponent {
         console.log('error', error);
       }
     );
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      console.log('this.dragPosition', this.dragPosition);
+    }, 3000);
   }
 
   public moveImageContainer() {
@@ -58,6 +67,21 @@ export class AppComponent {
         }
       }
     }, 20);
+  }
+
+  updateDragPosition(event: any) {
+    this._dragPosition = event;
+    this.enteredArea = this.getEnteredArea(this._dragPosition);
+    if (this.enteredArea && this.warrior) {
+      this.moveImageToBox(this.enteredArea);
+    }
+  }
+
+  public dragStateChanged(value: any) {
+    this.isImageDragged = value;
+    if (!this.isImageDragged) {
+      this.ended();
+    }
   }
 
   public moving(event: CdkDragMove) {
